@@ -10,10 +10,8 @@ https://www.dropbox.com/scl/fo/034sm39vn8mzfglznvx5t/AP773_VCdEzl4HYxinE6i04?rlk
 library(zellkonverter)
 library(Seurat)
 library(SeuratObject)
-set.seed(20250815)
 data <- readRDS("data/Hydra.rds")
-sampled_idx <- sample(seq_len(nrow(data)), 2000)
-data[sampled_idx, ] |>
+data |>
     as.SingleCellExperiment() |>
     writeH5AD("data/hydra.h5ad")
 ```
