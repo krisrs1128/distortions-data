@@ -1,0 +1,19 @@
+---
+title: Preparing the Hydra Data
+---
+
+The hydra dataset is too large to include here, but this is how we prepared it. Original source from:
+
+https://www.dropbox.com/scl/fo/034sm39vn8mzfglznvx5t/AP773_VCdEzl4HYxinE6i04?rlkey=5zj7sl843hor77gxr049epquh&e=1&dl=0
+
+```{r}
+library(zellkonverter)
+library(Seurat)
+library(SeuratObject)
+set.seed(20250815)
+data <- readRDS("data/Hydra.rds")
+sampled_idx <- sample(seq_len(nrow(data)), 2000)
+data[sampled_idx, ] |>
+    as.SingleCellExperiment() |>
+    writeH5AD("data/hydra.h5ad")
+```
